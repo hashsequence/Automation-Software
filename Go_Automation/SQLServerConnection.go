@@ -12,16 +12,18 @@ https://github.com/Microsoft/sql-server-samples/blob/master/samples/tutorials/go
 */
 
 func main() {
-  fmt.Println("hello world")
+  servername := ""
+  databasename := ""
+  query := ""
   fmt.Println(sql.Drivers())
-  db, err := sql.Open("sqlserver","odbc:server=ODSSQLCVSDEV;IntegratedSecurity = false;;database=cvsCareMarkPB;app name=MyAppName")
+  db, err := sql.Open("sqlserver","odbc:server="+ servername + ";IntegratedSecurity = false;;database=" + databasename + ";app name=MyAppName")
   if err != nil {
   log.Fatal("Open connection failed:", err.Error())
   }
   fmt.Printf("Connected!\n")
   defer db.Close()
 
-  tsql := fmt.Sprintf("SELECT distinct Top(3) memberrecid ,firstname, lastname from members (nolock);")
+  tsql := fmt.Sprintf(query)
   rows, _ := db.Query(tsql)
   cols, _ := rows.Columns()
 
