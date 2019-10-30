@@ -53,4 +53,33 @@ func main() {
       }
       fmt.Print("\n")
    }
+     /*multiple rows sets
+       store := []map[string]interface{}{}
+  for n := true; n; n = rows.NextResultSet() {
+    cols, _ := rows.Columns()
+
+    for rows.Next() {
+
+        columns := make([]interface{}, len(cols))
+        columnPointers := make([]interface{}, len(cols))
+        for i, _ := range columns {
+            columnPointers[i] = &columns[i]
+        }
+
+        if err := rows.Scan(columnPointers...); err != nil {
+            log.Fatal(err)
+        }
+        m := make(map[string]interface{})
+        for i, colName := range cols {
+            val := columnPointers[i].(*interface{})
+            m[colName] = *val
+        }
+        store = append(store, m)
+    }
+    fmt.Println(store)
+  }
+  js, _ = json.MarshalIndent(store, "", "  ")
+     
+     
+     */
 }
